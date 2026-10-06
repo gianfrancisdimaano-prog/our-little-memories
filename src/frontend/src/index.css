@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --font-display: "Fraunces";
+    --font-body: "General Sans";
+    --font-mono: "Geist Mono";
+    --radius: 0.5rem;
+
+    /* Deep burgundy-black canvas, warm cream ink */
+    --background: 0.16 0.045 15;
+    --foreground: 0.94 0.028 82;
+    --card: 0.21 0.055 14;
+    --card-foreground: 0.94 0.028 82;
+    --popover: 0.24 0.058 14;
+    --popover-foreground: 0.94 0.028 82;
+
+    /* Deep crimson primary */
+    --primary: 0.42 0.17 18;
+    --primary-foreground: 0.95 0.03 82;
+
+    /* Muted rose surface */
+    --secondary: 0.28 0.06 12;
+    --secondary-foreground: 0.9 0.03 82;
+    --muted: 0.27 0.05 13;
+    --muted-foreground: 0.72 0.045 70;
+
+    /* Gilded gold accent */
+    --accent: 0.78 0.13 84;
+    --accent-foreground: 0.2 0.05 60;
+
+    --destructive: 0.55 0.2 25;
+    --destructive-foreground: 0.95 0.03 82;
+
+    --success: 0.68 0.13 150;
+    --warning: 0.78 0.13 84;
+
+    --border: 0.34 0.06 20;
+    --input: 0.34 0.06 20;
+    --ring: 0.78 0.13 84;
+
+    --chart-1: 0.78 0.13 84;
+    --chart-2: 0.55 0.17 18;
+    --chart-3: 0.68 0.09 20;
+    --chart-4: 0.85 0.06 82;
+    --chart-5: 0.6 0.12 350;
+
+    /* Extended tokens */
+    --gold: 0.78 0.13 84;
+    --gold-soft: 0.86 0.08 85;
+    --rose: 0.62 0.14 8;
+    --cream: 0.94 0.028 82;
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.42 0.17 18) 0%,
+      oklch(0.32 0.13 12) 100%
+    );
+    --gradient-gold: linear-gradient(
+      90deg,
+      oklch(0.7 0.11 78) 0%,
+      oklch(0.86 0.08 88) 50%,
+      oklch(0.7 0.11 78) 100%
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.21 0.055 14) 0%,
+      oklch(0.17 0.045 15) 100%
+    );
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-soft: 0 12px 40px -12px oklch(0.1 0.04 15 / 0.7);
+    --shadow-glow: 0 0 32px -6px oklch(0.78 0.13 84 / 0.28);
+
+    --sidebar: 0.19 0.05 15;
+    --sidebar-foreground: 0.94 0.028 82;
+    --sidebar-primary: 0.42 0.17 18;
+    --sidebar-primary-foreground: 0.95 0.03 82;
+    --sidebar-accent: 0.27 0.05 13;
+    --sidebar-accent-foreground: 0.9 0.03 82;
+    --sidebar-border: 0.34 0.06 20;
+    --sidebar-ring: 0.78 0.13 84;
+  }
+
+  .dark {
+    --background: 0.16 0.045 15;
+    --foreground: 0.94 0.028 82;
+    --card: 0.21 0.055 14;
+    --card-foreground: 0.94 0.028 82;
+    --popover: 0.24 0.058 14;
+    --popover-foreground: 0.94 0.028 82;
+
+    --primary: 0.42 0.17 18;
+    --primary-foreground: 0.95 0.03 82;
+
+    --secondary: 0.28 0.06 12;
+    --secondary-foreground: 0.9 0.03 82;
+    --muted: 0.27 0.05 13;
+    --muted-foreground: 0.72 0.045 70;
+
+    --accent: 0.78 0.13 84;
+    --accent-foreground: 0.2 0.05 60;
+
+    --destructive: 0.55 0.2 25;
+    --destructive-foreground: 0.95 0.03 82;
+
+    --border: 0.34 0.06 20;
+    --input: 0.34 0.06 20;
+    --ring: 0.78 0.13 84;
+  }
+
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  .font-display {
+    font-family: var(--font-display), serif;
+  }
+  .font-body {
+    font-family: var(--font-body), sans-serif;
+  }
+  .font-mono {
+    font-family: var(--font-mono), monospace;
+  }
+  .text-gold {
+    color: oklch(var(--gold));
+  }
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+  .bg-gradient-gold {
+    background-image: var(--gradient-gold);
+  }
+  .bg-gradient-subtle {
+    background-image: var(--gradient-subtle);
+  }
+  .text-gradient-gold {
+    background-image: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  .label-eyebrow {
+    @apply font-mono text-xs font-medium uppercase tracking-[0.35em];
+  }
+}
+
+/* Respect users who prefer reduced motion: stop the continuous decorative
+   keyframe animations (petal-fall, petal-sway, glow-pulse, heart-beat,
+   equalize) while leaving all other styling untouched. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-petal-fall,
+  .animate-petal-sway,
+  .animate-glow-pulse,
+  .animate-heart-beat,
+  [class*="animate-[equalize"] {
+    animation: none !important;
+  }
+}
